@@ -13,5 +13,6 @@ class Album extends Model
 
     protected $casts = [
         'images' => 'array',
+        'images_two' => 'array'
     ];
 }

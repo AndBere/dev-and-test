@@ -154,6 +154,9 @@
     <div class="row mb-3">
         @include('_credit_images',['N_Photo'=>1,'addPhoto'=>true])
     </div>
+    <div class="row row2 mb-3">
+        @include('_credit_images_two',['N_Photo'=>1,'addPhoto'=>true])
+    </div>
 </div>
         <button type="submit" class="btn btn-primary ml-4">Сохранить</button>
     </form>

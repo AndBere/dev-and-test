@@ -50,7 +50,7 @@
                     margin-top: 1rem;
                     color: white;
                     font-size:2rem;
-                    font-weight: 700;"><a href="{{ route('albums.index') }} ">Go to task page</a></button>
+                    font-weight: 700;"><a href="{{ route('questions.index') }} ">Go to task page</a></button>
                 </div>
 
 

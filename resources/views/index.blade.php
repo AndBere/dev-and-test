@@ -1,50 +1,39 @@
-<head>
-    
-<!-- Font Awesome Icons -->
-<link rel="stylesheet" href="{{ asset('admin/plugins/fontawesome-free/css/all.min.css') }}">
-<!-- Theme style -->
-<link rel="stylesheet" href="{{ asset('admin/css/adminlte.min.css') }}">
+@extends('admin._layout')
+@section('title', 'Сообщения из форм в паблике')
+@section('content')
+    @component('admin._include.card')
+      
 
-</head>
+        @slot('cardFilters')
+{{--            @includ('admin.questions._filters')--}}
+        @endslot
 
-<body>
-    
+        @slot('cardTitle')
+            <span class="font-weight-bold mr-3">Сообщения</span>
+        @endslot
 
-<div class="contaiter">
-    <button style="margin:1rem;"><a href="{{ route('albums.create') }}"> + Создать </a></button>
-
-    <div class="card-body">
-        <h5>Таблица I</h5>
-        <table id="example1" class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th class="text-center">
-                       ID
-                    </th>
-                    <th>
-                       Photos array
-                    </th>
-                    <th>
-                        Created_at
-                    </th>
-                    <th>
-                        Edit
-                    </th>
+        @slot('cardBody')
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                   
+                    <th class="text-center">№</th>
+                    <th><input type="checkbox" id="master"></th>
+                    <th>Сообщение</th>
+                    <th>Удалить <button class="btn btn-primary delete_all" data-url="{{ url('questionsDeleteAll') }}">Delete All</button></th>
+                    <th>Дата</th>
+                    <th>Имя | Телефон | E-mail</th>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach($albums as $album)
-                <tr>
-                    <td>{{ $album->id }}</td>
-                    <td>{{ Arr::query($album->images) }}</td>
-                    <td>{{ $album->created_at }}</td>
-                    <td><a href="{{ route('albums.edit',$album->id) }}" class="text-primary mx-2">
-                        <i class="far fa-edit"></i>
-                    </a></td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-</div>
-</body>
+                </thead>
+                <tbody>
+                @if(isset($questions) and $questions->count() > 0)
+                    @foreach($questions as $question)
+                        @include('_table')
+                    @endforeach
+                @else
+
+                @endif
+                </tbody>
+            </table>
+        @endslot
+    @endcomponent
+@endsection

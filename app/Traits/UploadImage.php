@@ -8,10 +8,10 @@ use Illuminate\Support\Str;
 
 trait UploadImage
 {
-    public function uploadImages($images, array $data = [])
+    public function uploadImages($images, array $data = [], string $nameInput = 'images')
     {
         if($images == null or (is_array($images) and count(array_filter($images)) == 0)) { return []; } // or $images == '/storage/'.$this->getOriginal($name)
-        $name = $this->data_array($data,'name','images');
+        $name = $this->data_array($data,'name',$nameInput);
 
         $this->if_diff_images($images, $this->old_images($name));
 

@@ -27,6 +27,7 @@ class MediasController extends Controller
 
         $data = New Album();
         $data->uploadImages($request->images,['folder'=>'photos']); //,'images','jpeg','photos'
+        $data->uploadImages($request->image_two,['folder'=>'photos_two'], 'images_two');
         $data->save();
 
         return redirect()->route('albums.index')->with('success','Информация сохранена');
@@ -44,6 +45,7 @@ class MediasController extends Controller
 
         $data = Album::find($id);
         $data->uploadImages($request->images,['folder'=>'photos']); //,'images','jpeg','photos'
+        $data->uploadImages($request->image_two,['folder'=>'photos_two'], 'images_two');
         $data->save();
 
         return redirect()->route('albums.index')->with('success','Информация сохранена');
